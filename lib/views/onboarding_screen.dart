@@ -31,7 +31,7 @@ class ScreenSlider extends StatelessWidget {
       child: Column(
         children: <Widget>[
           SvgPicture.asset(
-            "assets/images/splash_image1.svg",
+            "assets/images/onboarding_image1.svg",
           ),
         ],
       ),
