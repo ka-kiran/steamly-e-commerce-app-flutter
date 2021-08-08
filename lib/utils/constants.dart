@@ -12,3 +12,10 @@ const myShadowColor = Color(0xffAEA2A2);
 const hintTextSearchColor = Color(0xff2E2929);
 
 const viewMoreTextColor = Color(0xffA5ADBA);
+
+const kDuration = const Duration(milliseconds: 300);
+
+const kCurve = Curves.ease;
+
+const onboardingPrimaryTextColor = Color(0xff000000);
+const onboardingSecondaryTextColor = Color(0xff818181);

@@ -63,7 +63,7 @@ class TitleInHomePage extends StatelessWidget {
   // constructor
   const TitleInHomePage({
     required Key? key,
-    required this.titleText,
+    required this.titleText, // e.g. Recommended
   }) : super(key: key);
 
   final String
