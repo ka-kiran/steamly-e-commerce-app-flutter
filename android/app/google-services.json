@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "551052392372",
+    "project_id": "login-authentication-flutter",
+    "storage_bucket": "login-authentication-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551052392372:android:7cfc3fc5080cb69647a4e1",
+        "android_client_info": {
+          "package_name": "com.example.steamly_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551052392372-vfstbjmsgnflrc0bcig2g3at1dq58444.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_ejM4U5aikM1KKokBCcpubZ9sxkp-CcA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551052392372-vfstbjmsgnflrc0bcig2g3at1dq58444.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

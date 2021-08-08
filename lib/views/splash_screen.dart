@@ -1,7 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:steamly_app/utils/constant_themes.dart';
+import 'package:steamly_app/utils/constants.dart';
 import 'package:steamly_app/views/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
           ],
         ),
       ),
-      nextScreen: OnboardingScreen(),
+      nextScreen: OnBoardingScreen(),
       splashTransition: SplashTransition.fadeTransition,
       backgroundColor:
           splashScreenBackgroundColor, // defined in constant_theme.dart

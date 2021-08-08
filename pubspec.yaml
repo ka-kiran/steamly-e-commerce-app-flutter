@@ -30,10 +30,17 @@ dependencies:
   google_fonts: ^2.1.0
   flutter_svg: ^0.22.0
   animated_splash_screen: ^1.1.0
+  firebase_auth: ^3.0.1
+  flutter_launcher_icons: ^0.9.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons: # app launch icon
+  android: true,
+  ios: true,
+  image_path: "assets/images/logo.png"
 
 
 flutter:
