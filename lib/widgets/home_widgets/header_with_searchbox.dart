@@ -15,7 +15,7 @@ class HeaderWithSearchBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: myDefaultPadding * 2.5),
+      margin: EdgeInsets.only(bottom: kDefaultPadding * 2.5),
       // This container will cover 20% of total height
       height: size.height * 0.2,
       //height: displayHeight(context) * 0.2,
@@ -23,13 +23,13 @@ class HeaderWithSearchBox extends StatelessWidget {
         children: <Widget>[
           Container(
             padding: EdgeInsets.only(
-                left: myDefaultPadding,
-                right: myDefaultPadding,
-                bottom: 36 + myDefaultPadding),
+                left: kDefaultPadding,
+                right: kDefaultPadding,
+                bottom: 36 + kDefaultPadding),
             height: size.height * 0.2 - 27,
             //height: displayHeight(context) * 0.2 - 27,
             decoration: BoxDecoration(
-              color: myPrimaryColor,
+              color: kPrimaryColor,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(30.0),
                 bottomRight: Radius.circular(30.0),
@@ -84,8 +84,8 @@ class HeaderWithSearchBox extends StatelessWidget {
             child: Container(
               alignment: Alignment.center,
               // margin and aaccessed from constants.dart
-              margin: EdgeInsets.symmetric(horizontal: myDefaultMargin),
-              padding: EdgeInsets.symmetric(horizontal: myDefaultPadding),
+              margin: EdgeInsets.symmetric(horizontal: kDefaultMargin),
+              padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
               height: 54.0,
               decoration: BoxDecoration(
                 color: Colors.white,

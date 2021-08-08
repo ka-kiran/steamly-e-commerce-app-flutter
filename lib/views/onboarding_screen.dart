@@ -16,7 +16,7 @@ class _OnBoardingState extends State<OnBoardingScreen> {
       body: Container(
         child: Column(
           children: [
-            ScreenSlider(),
+            ScreenSliderTile(),
           ],
         ),
       ),
@@ -24,15 +24,26 @@ class _OnBoardingState extends State<OnBoardingScreen> {
   }
 }
 
-class ScreenSlider extends StatelessWidget {
+class ScreenSliderTile extends StatelessWidget {
+  String imageAssetPath, onboardingTitle, onboardingDesc;
+  ScreenSliderTile({
+    required this.imageAssetPath,
+    required this.onboardingTitle,
+    required this.onboardingDesc,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: <Widget>[
-          SvgPicture.asset(
-            "assets/images/onboarding_image1.svg",
+          Image.asset(imageAssetPath), // passed arg for image asset path
+          SizedBox(
+            height: 20.0,
           ),
+          Text(onboardingTitle),
+          SizedBox(height: 12.0,),
+          Text(onboardingDesc),
         ],
       ),
     );

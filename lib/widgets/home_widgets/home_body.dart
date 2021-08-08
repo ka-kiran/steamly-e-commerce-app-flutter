@@ -3,9 +3,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:steamly_app/models/products.dart';
 import 'package:steamly_app/utils/constants.dart';
 import 'package:steamly_app/utils/sizes.dart';
 import 'package:steamly_app/widgets/home_widgets/header_with_searchbox.dart';
+import 'package:steamly_app/widgets/home_widgets/nav_section_below_search.dart';
 
 class HomePageBody extends StatelessWidget {
   @override
@@ -21,24 +23,33 @@ class HomePageBody extends StatelessWidget {
                   size), // extracted widget accessed from home_widgets/header_with_searchbox.dart
           Container(
             child:
-                NavigationBelowSearch(), // widget for navigation section below the search box
+                NavigationBelowSearch(), // widget for navigation section below the search box accessed from nav_section_below_search.dart
           ),
           SizedBox(
             height: 10.0,
           ),
-          Container(
-            height: 24,
-            child: Stack(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+            child: Row(
               children: <Widget>[
-                Text(
-                  "Recommended",
-                  style: TextStyle(
-                    fontFamily: GoogleFonts.roboto().fontFamily,
-                    fontSize: 16.0,
-                    color: mainTextColor,
+                TitleInHomePage(titleText: "Recommended", key: null),
+                Spacer(),
+                Container(
+                  child: GestureDetector(
+                    onTap: () {}, // TODO: view more functionality
+                    child: Row(
+                      children: [
+                        Text(
+                          "View More",
+                          style: TextStyle(
+                            color: viewMoreTextColor,
+                          ),
+                        ),
+                        SvgPicture.asset("assets/icons/chevron_right.svg"),
+                      ],
+                    ),
                   ),
                 ),
-                Container(),
               ],
             ),
           ),
@@ -48,55 +59,42 @@ class HomePageBody extends StatelessWidget {
   }
 }
 
-// navigation section below the search box widget
-class NavigationBelowSearch extends StatefulWidget {
-  const NavigationBelowSearch({Key? key}) : super(key: key);
+class TitleInHomePage extends StatelessWidget {
+  // constructor
+  const TitleInHomePage({
+    required Key? key,
+    required this.titleText,
+  }) : super(key: key);
 
-  @override
-  _NavigationBelowSearchState createState() => _NavigationBelowSearchState();
-}
-
-class _NavigationBelowSearchState extends State<NavigationBelowSearch> {
-  List<String> navSection = [
-    "Popular",
-    "New Arrivals",
-    "All Categories",
-    "Offers",
-    "Luxury",
-  ];
+  final String
+      titleText; // variable declaration for Title in Home Page like Recommended
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 30.0,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal, // scroll towards horizontal direction
-        itemCount: navSection.length,
-        itemBuilder: (context, index) => buildNavSection(index),
-      ),
-    );
-  }
-
-// widget to build navigation section below search box
-  Widget buildNavSection(int index) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      // Container widget with box decorated microinteraction nav section
-      child: Container(
-        height: 20.0,
-        padding: EdgeInsets.only(left: 20.0, right: 20.0),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.black,
+    return Container(
+      child: Stack(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(left: kDefaultPadding / 4),
+            child: Text(
+              titleText, // e.g. Recommended
+              style: TextStyle(
+                fontFamily: GoogleFonts.roboto().fontFamily,
+                fontSize: 16.0,
+                color: kPrimaryTextColor,
+              ),
+            ),
           ),
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        child: Text(
-          navSection[index], // pass navigation bar list
-          style: TextStyle(
-            fontWeight: FontWeight.normal,
-            fontSize: 12.0,
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 8.0,
+              margin: EdgeInsets.only(right: kDefaultPadding / 4),
+              color: kPrimaryColor.withOpacity(0.2),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

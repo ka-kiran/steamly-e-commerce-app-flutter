@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: myPrimaryColor,
+        primaryColor: kPrimaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
