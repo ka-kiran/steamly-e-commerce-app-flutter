@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:steamly_app/routes/routes.dart';
+import 'package:steamly_app/utils/constants.dart';
 import 'package:steamly_app/widgets/login_page_widgets/input_textfield.dart';
 
-class SkipButton extends StatelessWidget {
+class SkipButton extends StatefulWidget {
   const SkipButton({
     Key? key,
   }) : super(key: key);
+
+  @override
+  _SkipButtonState createState() => _SkipButtonState();
+}
+
+class _SkipButtonState extends State<SkipButton> {
+  bool isPressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -13,19 +21,23 @@ class SkipButton extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
       alignment: Alignment.topRight,
       child: ElevatedButton(
-        onPressed: () => Navigator.pushNamed(context, MyRoutes.homeRoute),
+        onPressed: () {
+          setState(() {
+            isPressed = true;
+          });
+          Navigator.pushNamed(context, MyRoutes.homeRoute);
+        },
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             StadiumBorder(
               side: BorderSide(color: Colors.black),
             ),
           ),
-          backgroundColor: MaterialStateProperty.resolveWith(
-              getColor), // accessed from login_widget.dart
+          backgroundColor: MaterialStateProperty.resolveWith(getColor),
         ),
         child: Text(
           "Skip",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: isPressed ? Colors.white : Colors.black),
         ),
       ),
     );
@@ -40,7 +52,7 @@ Color getColor(Set<MaterialState> states) {
     MaterialState.focused,
   };
   if (states.any(interactiveStates.contains)) {
-    return Colors.black38;
+    return kPrimaryColor;
   }
   return Colors.white;
 }

@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:steamly_app/routes/routes.dart';
 import 'package:steamly_app/utils/constants.dart';
 import 'package:steamly_app/widgets/login_page_widgets/input_textfield.dart';
 import 'package:steamly_app/widgets/login_page_widgets/skip_btn.dart';
+import 'package:steamly_app/widgets/login_page_widgets/textfield_validator.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   String emailValue = "";
   String passwordValue = "";
@@ -32,10 +34,12 @@ class _LoginPageState extends State<LoginPage> {
 
   // on tap move to home page
   moveToHomePage(BuildContext context) async {
-    await Navigator.pushNamed(context, MyRoutes.homeRoute);
-    setState(() {
-      moveToHomePage(context);
-    });
+    if (_formKey.currentState!.validate()) {
+      await Navigator.pushNamed(context, MyRoutes.homeRoute);
+      setState(() {
+        moveToHomePage(context);
+      });
+    }
   }
 
   @override
@@ -59,40 +63,29 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Form(
-                    key: formKey,
+                    key: _formKey,
                     child: Column(
                       children: <Widget>[
                         TextFormField(
                           controller: userNameTextEditingController,
-                          decoration: textFieldInputDecoration(
+                          decoration: usernameTextFieldInputDecoration(
                             // accessed from login_widget.dart which takes two parameters
                             "Username",
                             "Enter your phone number, email or username",
                           ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Please enter the phone number, email or username";
-                            }
-                            return null;
-                          },
+                          validator: usernameValidator,
                         ),
                         SizedBox(
                           height: 30.0,
                         ),
                         TextFormField(
+                          obscureText: true,
                           controller: passwordTextEditingController,
-                          decoration: textFieldInputDecoration(
-                            "Password",
-                            "Enter your password",
-                          ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Please enter the valid password";
-                            } else if (value.length < 8) {
-                              return "Minimum 8 password characters required";
-                            }
-                            return null;
-                          },
+                          decoration: passwordTextFieldInputDecoration(
+                              "Password",
+                              "Enter your password",
+                              Icon(Icons.visibility)),
+                          validator: passwordValidator,
                         ),
                         SizedBox(
                           height: 10.0,
@@ -267,4 +260,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
