@@ -55,7 +55,7 @@ class HeaderWithSearchBox extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    width: 75.0,
+                    width: 100.0,
                   ),
                   Row(
                     children: <Widget>[
@@ -64,7 +64,7 @@ class HeaderWithSearchBox extends StatelessWidget {
                         child: SvgPicture.asset("assets/icons/favourite.svg"),
                       ),
                       SizedBox(
-                        width: 15.0,
+                        width: 12.0,
                       ),
                       GestureDetector(
                         onTap: () {}, // TODO:
@@ -94,7 +94,7 @@ class HeaderWithSearchBox extends StatelessWidget {
                   BoxShadow(
                     offset: Offset(0, 10),
                     blurRadius: 50,
-                    color: myShadowColor.withOpacity(0.5),
+                    color: kShadowColor.withOpacity(0.5),
                   ),
                 ],
               ),

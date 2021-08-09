@@ -14,7 +14,7 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingState extends State<OnBoardingScreen> {
-  int selectedSliderIndex = 0; // current slider index
+  int currentSliderIndex = 0; // current slider index
   int positionIndex = 0;
   late PageController _pageController;
 
@@ -25,16 +25,17 @@ class _OnBoardingState extends State<OnBoardingScreen> {
     });
   }
 
-  onIndexChanged(int index) {
+  changeIndex(int index) {
+    // when changing page change the current index
     setState(() {
-      selectedSliderIndex = index;
+      currentSliderIndex = index;
     });
   }
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
+    _pageController = PageController(initialPage: 0);
   }
 
   @override
@@ -46,56 +47,128 @@ class _OnBoardingState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView.builder(
-        itemCount: sliderModel.length, // accessed from onboarding_data.dart
-        itemBuilder: (_, i) {
-          return SafeArea(
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: buildPageView(),
+          ),
+          // for current slider indicator
+          Container(
+            margin: EdgeInsets.only(bottom: 80.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                sliderModel.length,
+                (index) => buidlDots(index, context), // slider indicator dots
+              ),
+            ),
+          ),
+          Container(
+            height: 60.0,
+            width: MediaQuery.of(context).size.width,
+            //width: double.infinity,
+            color: kPrimaryColor,
             child: Padding(
-              padding: const EdgeInsets.all(40),
-              child: Column(
-                children: [
-                  SvgPicture.asset(
-                    sliderModel[i].image,
-                    height: 300,
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                children: <Widget>[
+                  InkWell(
+                    onTap: () {
+                      moveToLoginPage(context);
+                    },
+                    child: Text("Skip"),
                   ),
                   SizedBox(
-                    height: 25.0,
+                    width: 290,
                   ),
-                  Text(
-                    "Discover the trends and products.",
-                    style: TextStyle(
-                      color: onboardingPrimaryTextColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: GoogleFonts.roboto().fontFamily,
-                    ),
+                  InkWell(
+                    onTap: () {
+                      // controlling page flow
+                      if (currentSliderIndex == sliderModel.length - 1) {
+                        moveToLoginPage(context);
+                      }
+                      _pageController.nextPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.bounceIn);
+                    },
+                    child: Text("Next"),
                   ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Text(
-                    "One hotspot for wide range of categories.",
-                    style: TextStyle(
-                      color: onboardingSecondaryTextColor,
-                      fontSize: 12,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: GoogleFonts.roboto().fontFamily,
-                    ),
-                  )
                 ],
               ),
             ),
-          );
-        },
+          ),
+        ],
+      ),
+    );
+  }
+
+// building page view
+  Widget buildPageView() {
+    return PageView.builder(
+      controller: _pageController, // controller for page view
+      itemCount: sliderModel.length, // accessed from onboarding_data.dart
+      onPageChanged: (int index) {
+        // on changing page change the current slider index
+        setState(() {
+          currentSliderIndex = index;
+        });
+      },
+      itemBuilder: (_, index) {
+        // parameters index
+        return Padding(
+          padding: const EdgeInsets.all(40),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 50,
+              ),
+              SvgPicture.asset(
+                sliderModel[index].image,
+                height: 300,
+              ),
+              SizedBox(
+                height: 100.0,
+              ),
+              Text(
+                sliderModel[index].title,
+                style: TextStyle(
+                  color: onboardingPrimaryTextColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: GoogleFonts.roboto().fontFamily,
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                sliderModel[index].desc,
+                style: TextStyle(
+                  color: onboardingSecondaryTextColor,
+                  fontSize: 12,
+                  fontWeight: FontWeight.normal,
+                  fontFamily: GoogleFonts.roboto().fontFamily,
+                ),
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  // build slider indicator dots
+  Container buidlDots(int index, BuildContext context) {
+    //parameter  index
+    return Container(
+      height: 10,
+      // width: 10,
+      width: currentSliderIndex == index ? 25 : 10,
+      margin: EdgeInsets.only(right: 5),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: kPrimaryColor,
       ),
     );
   }
 }
-
-// Widget buildOnboardingScreen (int index){
-//   return Container(
-//     child: Column(children: [
-//       SvgPicture.asset(image)
-//     ],),
-//   );
-// }

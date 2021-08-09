@@ -7,7 +7,8 @@ import 'package:steamly_app/models/products.dart';
 import 'package:steamly_app/utils/constants.dart';
 import 'package:steamly_app/utils/sizes.dart';
 import 'package:steamly_app/widgets/home_widgets/header_with_searchbox.dart';
-import 'package:steamly_app/widgets/home_widgets/nav_section_below_search.dart';
+import 'package:steamly_app/widgets/home_widgets/nav_categories.dart';
+import 'package:steamly_app/widgets/home_widgets/section_title.dart';
 
 class HomePageBody extends StatelessWidget {
   @override
@@ -32,7 +33,10 @@ class HomePageBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: Row(
               children: <Widget>[
-                TitleInHomePage(titleText: "Recommended", key: null),
+                TitleWithMoreBtn(
+                    titleText: "Recommended",
+                    key: null), // accessed from titile_with_more_btn.dart
+
                 Spacer(),
                 Container(
                   child: GestureDetector(
@@ -53,49 +57,45 @@ class HomePageBody extends StatelessWidget {
               ],
             ),
           ),
+          Column(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(kDefaultPadding),
+                height: 100,
+                width: 160,
+                decoration: BoxDecoration(
+                  color: catalogItemContainerColor,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Image.asset(
+                  product[0].image, // accessed from models/products.dart
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
 }
 
-class TitleInHomePage extends StatelessWidget {
-  // constructor
-  const TitleInHomePage({
-    required Key? key,
-    required this.titleText, // e.g. Recommended
-  }) : super(key: key);
+// bottom navigation bar
+class CustomeBottomNavigationBar extends StatefulWidget {
+  const CustomeBottomNavigationBar({Key? key}) : super(key: key);
 
-  final String
-      titleText; // variable declaration for Title in Home Page like Recommended
+  @override
+  _CustomeBottomNavigationBarState createState() =>
+      _CustomeBottomNavigationBarState();
+}
+
+class _CustomeBottomNavigationBarState
+    extends State<CustomeBottomNavigationBar> {
+  int _navSelectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: kDefaultPadding / 4),
-            child: Text(
-              titleText, // e.g. Recommended
-              style: TextStyle(
-                fontFamily: GoogleFonts.roboto().fontFamily,
-                fontSize: 16.0,
-                color: kPrimaryTextColor,
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: 8.0,
-              margin: EdgeInsets.only(right: kDefaultPadding / 4),
-              color: kPrimaryColor.withOpacity(0.2),
-            ),
-          ),
-        ],
-      ),
+    return Scaffold(
+      body: Container(),
     );
   }
 }

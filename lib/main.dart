@@ -4,6 +4,7 @@ import 'package:steamly_app/views/home_screen.dart';
 import 'package:steamly_app/views/login_screen.dart';
 import 'package:steamly_app/views/product_details_page.dart';
 import 'package:steamly_app/views/onboarding_screen.dart';
+import 'package:steamly_app/views/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.onBoardingRoute, // initial route for splash screen
+      initialRoute: MyRoutes.loginRoute, // initial route for splash screen
       routes: {
         "/": (context) => LoginPage(),
         MyRoutes.loginRoute: (context) => LoginPage(),

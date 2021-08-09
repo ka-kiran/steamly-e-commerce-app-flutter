@@ -16,7 +16,7 @@ class Products {
 List<Products> product = [
   Products(
       id: 1,
-      image: "assets/images/bag 1.png",
+      image: "assets/images/bag 3.png",
       title: "Black Leather Bag",
       price: 4400,
       description: "this is desc",
