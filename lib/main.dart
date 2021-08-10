@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:steamly_app/models/products.dart';
 import 'package:steamly_app/routes/routes.dart';
 import 'package:steamly_app/views/home_screen.dart';
 import 'package:steamly_app/views/login_screen.dart';
@@ -7,7 +8,7 @@ import 'package:steamly_app/views/product_details_page.dart';
 import 'package:steamly_app/views/onboarding_screen.dart';
 import 'package:steamly_app/views/signup_screen.dart';
 import 'package:steamly_app/views/splash_screen.dart';
-import 'package:steamly_app/views/view_more.dart';
+import 'package:steamly_app/views/view_more_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +29,6 @@ class MyApp extends StatelessWidget {
         MyRoutes.loginRoute: (context) => LoginPage(),
         MyRoutes.onBoardingRoute: (context) => OnBoardingScreen(),
         MyRoutes.homeRoute: (context) => HomePage(),
-        MyRoutes.productDetailsRoute: (context) => ProductDetailsPage(),
         MyRoutes.viewMoreRoute: (context) => ViewMorePage(),
       },
     );

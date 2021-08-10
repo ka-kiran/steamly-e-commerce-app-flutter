@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-AppBar buildAppBar(String appBarTitle) {
+AppBar buildAppBar(String appBarTitle, ) {
   return AppBar(
     title: Text(
       appBarTitle,

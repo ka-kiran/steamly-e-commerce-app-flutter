@@ -20,8 +20,12 @@ class CatalogItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         //await Future.delayed(Duration(seconds: 1));
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ProductDetailsPage()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProductDetailsPage(
+                      products: products[index],
+                    )));
       },
       child: Column(
         children: <Widget>[

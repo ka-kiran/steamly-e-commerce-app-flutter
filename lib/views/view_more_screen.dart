@@ -22,7 +22,13 @@ class ViewMorePage extends StatelessWidget {
             itemCount: products.length,
             itemBuilder: (context, index) {
               return GridViewMore(
-                  products: products[index], size: size, index: index);
+                products: products[index],
+                size: size,
+                index: index,
+                press: () => ProductDetailsPage(
+                  products: products[index],
+                ),
+              );
             },
           ),
         ),
@@ -33,12 +39,14 @@ class ViewMorePage extends StatelessWidget {
 
 class GridViewMore extends StatelessWidget {
   final Size size;
-  final Products products;
+  final Products products; // variable for products indexing
   final int index;
+  final Function press; // what to do when pressed function
   const GridViewMore(
       {Key? key,
       required this.products,
       required this.size,
+      required this.press,
       required this.index})
       : assert(products != null),
         super(key: key);
@@ -47,8 +55,13 @@ class GridViewMore extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ProductDetailsPage()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    ProductDetailsPage(
+                      products: products,
+                    )));
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
