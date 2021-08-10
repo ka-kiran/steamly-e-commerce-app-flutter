@@ -7,7 +7,7 @@ import 'package:steamly_app/views/product_details_page.dart';
 import 'package:steamly_app/views/onboarding_screen.dart';
 import 'package:steamly_app/views/signup_screen.dart';
 import 'package:steamly_app/views/splash_screen.dart';
-import 'package:steamly_app/widgets/home_widgets/view_more.dart';
+import 'package:steamly_app/views/view_more.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: MyRoutes.homeRoute, // initial route for splash screen
       routes: {
-        "/": (context) => LoginPage(),
+        "/": (context) => HomePage(), // default route
         MyRoutes.loginRoute: (context) => LoginPage(),
         MyRoutes.onBoardingRoute: (context) => OnBoardingScreen(),
         MyRoutes.homeRoute: (context) => HomePage(),

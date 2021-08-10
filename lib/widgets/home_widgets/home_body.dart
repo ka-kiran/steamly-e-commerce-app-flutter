@@ -7,7 +7,7 @@ import 'package:steamly_app/widgets/home_widgets/catalog_item.dart';
 import 'package:steamly_app/widgets/home_widgets/header_with_searchbox.dart';
 import 'package:steamly_app/widgets/home_widgets/nav_categories.dart';
 import 'package:steamly_app/widgets/home_widgets/section_title.dart';
-import 'package:steamly_app/widgets/home_widgets/view_more.dart';
+import 'package:steamly_app/views/view_more.dart';
 
 class HomePageBody extends StatelessWidget {
   moveToViewMorePage(BuildContext context) {
