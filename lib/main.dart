@@ -7,6 +7,7 @@ import 'package:steamly_app/views/product_details_page.dart';
 import 'package:steamly_app/views/onboarding_screen.dart';
 import 'package:steamly_app/views/signup_screen.dart';
 import 'package:steamly_app/views/splash_screen.dart';
+import 'package:steamly_app/widgets/home_widgets/view_more.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.onBoardingRoute: (context) => OnBoardingScreen(),
         MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.productDetailsRoute: (context) => ProductDetailsPage(),
+        MyRoutes.viewMoreRoute: (context) => ViewMorePage(),
       },
     );
   }

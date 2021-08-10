@@ -7,8 +7,14 @@ import 'package:steamly_app/widgets/home_widgets/catalog_item.dart';
 import 'package:steamly_app/widgets/home_widgets/header_with_searchbox.dart';
 import 'package:steamly_app/widgets/home_widgets/nav_categories.dart';
 import 'package:steamly_app/widgets/home_widgets/section_title.dart';
+import 'package:steamly_app/widgets/home_widgets/view_more.dart';
 
 class HomePageBody extends StatelessWidget {
+  moveToViewMorePage(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => ViewMorePage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     // Total height and width of screen for responsive behaviour
@@ -32,7 +38,9 @@ class HomePageBody extends StatelessWidget {
                 Spacer(),
                 Container(
                   child: GestureDetector(
-                    onTap: () {}, // TODO: view more functionality
+                    onTap: () {
+                      moveToViewMorePage(context);
+                    },
                     child: Row(
                       children: [
                         Text(
@@ -72,7 +80,9 @@ class HomePageBody extends StatelessWidget {
                 Spacer(),
                 Container(
                   child: GestureDetector(
-                    onTap: () {}, // TODO: view more functionality
+                    onTap: () {
+                      moveToViewMorePage(context);
+                    },
                     child: Row(
                       children: [
                         Text(
