@@ -1,25 +1,153 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:steamly_app/routes/routes.dart';
+import 'package:steamly_app/utils/constants.dart';
+import 'package:steamly_app/views/home_screen.dart';
+import 'package:steamly_app/views/login_screen.dart';
+import 'package:steamly_app/widgets/login_page_widgets/input_textfield.dart';
+import 'package:steamly_app/widgets/login_page_widgets/textfield_validator.dart';
 
-void initializeFirebase() async {
-  await Firebase.initializeApp();
+// void initializeFirebase() async {
+//   await Firebase.initializeApp();
+// }
+
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
+
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-const kTextFieldDecoration = InputDecoration(
-  hintText: 'Enter a value',
-  hintStyle: TextStyle(color: Colors.grey),
-  contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-  border: OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-  ),
-  enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.lightBlueAccent, width: 1.0),
-    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-  ),
-  focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-  ),
-);
+class _SignUpScreenState extends State<SignUpScreen> {
+  TextEditingController userNameTextEditingController =
+      new TextEditingController();
+  TextEditingController passwordTextEditingController =
+      new TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final _auth = FirebaseAuth.instance;
+
+  late String emailInputValue;
+  late String passwordInputValue;
+  bool showSpinner = false; // circular progress snipper
+
+  moveToLoginPage(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      await Navigator.pushNamed(context, MyRoutes.loginRoute);
+      setState(() {
+        moveToLoginPage(context);
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    userNameTextEditingController.dispose();
+    passwordTextEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        leading: Icon(
+          Icons.arrow_back,
+          color: Colors.black,
+        ),
+        title: Text(
+          "Steamly Sign Up",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        backgroundColor: kPrimaryColor,
+      ),
+      backgroundColor: kPrimaryColor,
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  TextFormField(
+                    controller: userNameTextEditingController,
+                    decoration: usernameTextFieldInputDecoration(
+                      "Username",
+                      "Enter your email",
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                    validator: usernameValidator,
+                    onChanged: (value) {
+                      emailInputValue = value;
+                    },
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
+                    obscureText: true,
+                    controller: passwordTextEditingController,
+                    decoration: passwordTextFieldInputDecoration(
+                      "Password",
+                      "Enter your password",
+                      Icon(Icons.visibility),
+                    ),
+                    validator: passwordValidator,
+                    onChanged: (value) {
+                      passwordInputValue = value;
+                    },
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton(
+                    child: Text("Sign Up"),
+                    onPressed: () async {
+                      final snackBar = SnackBar(
+                        content: Text("Successfully registered"),
+                        action: SnackBarAction(
+                          label: "Undo",
+                          onPressed: () {}, // TODO: undo snackbar
+                        ),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      setState(() {
+                        showSpinner = true;
+                      });
+                      try {
+                        final newUser =
+                            await _auth.createUserWithEmailAndPassword(
+                                email: emailInputValue,
+                                password: passwordInputValue);
+                        if (newUser != null) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
+                        }
+                      } catch (e) {
+                        print(e);
+                      }
+                      setState(() {
+                        showSpinner = false;
+                      });
+                    },
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

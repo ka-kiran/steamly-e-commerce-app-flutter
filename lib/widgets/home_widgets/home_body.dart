@@ -99,6 +99,9 @@ class HomePageBody extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Container(

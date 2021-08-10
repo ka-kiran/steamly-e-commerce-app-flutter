@@ -17,12 +17,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _formKey = GlobalKey<FormState>();
-
-  String emailValue = "";
-  String passwordValue = "";
-
-  final _auth = FirebaseAuth.instance;
   @override
   void initState() {
     super.initState();
@@ -32,6 +26,11 @@ class _LoginPageState extends State<LoginPage> {
       new TextEditingController();
   TextEditingController passwordTextEditingController =
       new TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  final _auth = FirebaseAuth.instance;
+  late String emailInputValue;
+  late String passwordInputValue;
 
   // on tap move to home page
   moveToHomePage(BuildContext context) async {
@@ -46,6 +45,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kPrimaryColor,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
@@ -70,11 +70,13 @@ class _LoginPageState extends State<LoginPage> {
                         TextFormField(
                           controller: userNameTextEditingController,
                           decoration: usernameTextFieldInputDecoration(
-                            // accessed from login_widget.dart which takes two parameters
                             "Username",
                             "Enter your phone number, email or username",
                           ),
                           validator: usernameValidator,
+                          onChanged: (value) {
+                            emailInputValue = value;
+                          },
                         ),
                         SizedBox(
                           height: 30.0,
@@ -87,6 +89,9 @@ class _LoginPageState extends State<LoginPage> {
                               "Enter your password",
                               Icon(Icons.visibility)),
                           validator: passwordValidator,
+                          onChanged: (value) {
+                            passwordInputValue = value;
+                          },
                         ),
                         SizedBox(
                           height: 10.0,
@@ -106,8 +111,28 @@ class _LoginPageState extends State<LoginPage> {
                           height: 8.0,
                         ),
                         GestureDetector(
-                          onTap: () => moveToHomePage(
-                              context), // on tap move to home page
+                          onTap: () async {
+                            final snackBar = SnackBar(
+                              content: Text("Login Successful!"),
+                              action: SnackBarAction(
+                                label: "Change",
+                                onPressed: () {}, // TODO: undo snackbar
+                              ),
+                            );
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                            try {
+                              final user =
+                                  await _auth.signInWithEmailAndPassword(
+                                      email: emailInputValue,
+                                      password: passwordInputValue);
+                              if (user != null) {
+                                Navigator.pushNamed(context, 'home_screen');
+                              }
+                            } catch (e) {
+                              print(e);
+                            }
+                          }, // on tap move to home page
                           child: Container(
                             padding: EdgeInsets.symmetric(
                               vertical: 18.0,
@@ -124,8 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             decoration: BoxDecoration(
-                              color:
-                                  loginButtonColor, // defined in constant_themes.dart
+                              color: loginButtonColor,
                               borderRadius: BorderRadius.circular(900.0),
                             ),
                           ),

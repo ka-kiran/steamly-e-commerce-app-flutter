@@ -23,10 +23,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.homeRoute, // initial route for splash screen
+      initialRoute: MyRoutes.signupRoute, // initial route for splash screen
       routes: {
         "/": (context) => HomePage(), // default route
         MyRoutes.loginRoute: (context) => LoginPage(),
+        MyRoutes.signupRoute: (context) => SignUpScreen(),
         MyRoutes.onBoardingRoute: (context) => OnBoardingScreen(),
         MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.viewMoreRoute: (context) => ViewMorePage(),
