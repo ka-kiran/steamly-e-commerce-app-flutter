@@ -2,10 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:steamly_app/models/products.dart';
 import 'package:steamly_app/utils/constants.dart';
-import 'package:steamly_app/utils/sizes.dart';
+import 'package:steamly_app/widgets/home_widgets/catalog_item.dart';
 import 'package:steamly_app/widgets/home_widgets/header_with_searchbox.dart';
 import 'package:steamly_app/widgets/home_widgets/nav_categories.dart';
 import 'package:steamly_app/widgets/home_widgets/section_title.dart';
@@ -19,12 +17,9 @@ class HomePageBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          HeaderWithSearchBox(
-              size:
-                  size), // extracted widget accessed from home_widgets/header_with_searchbox.dart
+          HeaderWithSearchBox(size: size),
           Container(
-            child:
-                NavigationBelowSearch(), // widget for navigation section below the search box accessed from nav_section_below_search.dart
+            child: NavigationBelowSearch(),
           ),
           SizedBox(
             height: 10.0,
@@ -33,10 +28,7 @@ class HomePageBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: Row(
               children: <Widget>[
-                TitleWithMoreBtn(
-                    titleText: "Recommended",
-                    key: null), // accessed from titile_with_more_btn.dart
-
+                TitleWithMoreBtn(titleText: "Recommended", key: null),
                 Spacer(),
                 Container(
                   child: GestureDetector(
@@ -57,21 +49,60 @@ class HomePageBody extends StatelessWidget {
               ],
             ),
           ),
-          Column(
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.all(kDefaultPadding),
-                height: 100,
-                width: 160,
-                decoration: BoxDecoration(
-                  color: catalogItemContainerColor,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Image.asset(
-                  product[0].image, // accessed from models/products.dart
-                ),
+          SizedBox(
+            height: 20,
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Container(
+              child: Row(
+                children: <Widget>[
+                  CatalogItem(size: size, index: 0),
+                  CatalogItem(size: size, index: 1),
+                  CatalogItem(size: size, index: 2)
+                ],
               ),
-            ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+            child: Row(
+              children: <Widget>[
+                TitleWithMoreBtn(titleText: "Best Deals", key: null),
+                Spacer(),
+                Container(
+                  child: GestureDetector(
+                    onTap: () {}, // TODO: view more functionality
+                    child: Row(
+                      children: [
+                        Text(
+                          "View More",
+                          style: TextStyle(
+                            color: viewMoreTextColor,
+                          ),
+                        ),
+                        SvgPicture.asset("assets/icons/chevron_right.svg"),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Container(
+              child: Row(
+                children: <Widget>[
+                  CatalogItem(size: size, index: 5),
+                  CatalogItem(size: size, index: 4),
+                  CatalogItem(size: size, index: 3),
+                  CatalogItem(size: size, index: 2),
+                  CatalogItem(size: size, index: 1),
+                  CatalogItem(size: size, index: 0),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -90,6 +121,7 @@ class CustomeBottomNavigationBar extends StatefulWidget {
 
 class _CustomeBottomNavigationBarState
     extends State<CustomeBottomNavigationBar> {
+  // ignore: unused_field
   int _navSelectedIndex = 0;
 
   @override

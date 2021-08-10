@@ -22,6 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   String emailValue = "";
   String passwordValue = "";
 
+  final _auth = FirebaseAuth.instance;
   @override
   void initState() {
     super.initState();
@@ -171,83 +172,93 @@ class _LoginPageState extends State<LoginPage> {
                         ),
 
                         // Alternative Login Section
-                        Row(children: <Widget>[
-                          GestureDetector(
-                            onTap: () {
-                              // TODO:
-                            },
-                            child: Container(
-                              width: 120,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: buttonShadowColor,
-                                    blurRadius: 11,
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                children: <Widget>[
-                                  Text(
-                                    "Google",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily:
-                                            GoogleFonts.roboto().fontFamily,
-                                        fontSize: 16.0),
-                                  ),
-                                  SvgPicture.asset(
-                                    "assets/icons/google_icon.svg",
-                                    width: 25,
-                                    height: 25,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 100,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              // TODO:
-                            },
-                            child: Container(
-                              width: 120.0,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: buttonShadowColor,
-                                    blurRadius: 11,
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                children: <Widget>[
-                                  Text(
-                                    "Facebook",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily:
-                                            GoogleFonts.roboto().fontFamily,
-                                        fontSize: 16.0),
-                                  ),
-                                  SvgPicture.asset(
-                                    "assets/icons/facebook_icon.svg",
-                                    width: 25,
-                                    height: 25,
-                                  ),
-                                ],
+                        Row(
+                          children: <Widget>[
+                            GestureDetector(
+                              onTap: () {
+                                // TODO:
+                              },
+                              child: Container(
+                                width: 120,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: buttonShadowColor,
+                                      blurRadius: 11,
+                                    ),
+                                  ],
+                                ),
+                                child: Row(
+                                  children: <Widget>[
+                                    Text(
+                                      "Google",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontFamily:
+                                              GoogleFonts.roboto().fontFamily,
+                                          fontSize: 16.0),
+                                    ),
+                                    SvgPicture.asset(
+                                      "assets/icons/google_icon.svg",
+                                      width: 25,
+                                      height: 25,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
+                            SizedBox(
+                              width: 100,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                // TODO:
+                              },
+                              child: Container(
+                                width: 120.0,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: buttonShadowColor,
+                                      blurRadius: 11,
+                                    ),
+                                  ],
+                                ),
+                                child: Row(
+                                  children: <Widget>[
+                                    Text(
+                                      "Facebook",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontFamily:
+                                              GoogleFonts.roboto().fontFamily,
+                                          fontSize: 16.0),
+                                    ),
+                                    SvgPicture.asset(
+                                      "assets/icons/facebook_icon.svg",
+                                      width: 25,
+                                      height: 25,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, MyRoutes.signupRoute);
+                          },
+                          child: Text(
+                            "Register",
                           ),
-                        ]),
+                        )
                       ],
                     ),
                   ),

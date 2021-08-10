@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:steamly_app/routes/routes.dart';
 import 'package:steamly_app/utils/constants.dart';
-import 'package:steamly_app/widgets/login_page_widgets/input_textfield.dart';
 
 class SkipButton extends StatefulWidget {
   const SkipButton({
