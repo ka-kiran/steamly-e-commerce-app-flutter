@@ -38,20 +38,25 @@ class ProductDetailsBody extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.only(
-                  left: kDefaultPadding * 1, right: kDefaultPadding),
+                left: kDefaultPadding * 1,
+                right: kDefaultPadding * 1,
+                top: kDefaultPadding,
+              ),
               child: Column(
                 children: <Widget>[
                   Row(
                     children: <Widget>[
                       Text(products.title),
-                      SizedBox(width: 100,),
+                      Spacer(),
                       Text(
                         "Rs ${products.markedPrice}",
                         style: TextStyle(
                           fontSize: 12,
                         ),
                       ),
-                      SizedBox(width: 3,),
+                      SizedBox(
+                        width: 3
+                      ),
                       Text(
                         "Rs ${products.price}",
                         style: TextStyle(
