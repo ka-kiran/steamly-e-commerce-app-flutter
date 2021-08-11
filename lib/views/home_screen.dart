@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:steamly_app/utils/constants.dart';
+import 'package:steamly_app/widgets/drawer.dart';
 import 'package:steamly_app/widgets/home_widgets/home_body.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,10 +24,10 @@ class _HomePageState extends State<HomePage> {
       home: Scaffold(
         appBar: buildAppBar(), // method for appBar
         body: HomePageBody(),
+        drawer: MyDrawer(),
       ),
     );
   }
-
 
   AppBar buildAppBar() {
     return AppBar(
@@ -38,12 +39,13 @@ class _HomePageState extends State<HomePage> {
         ),
         onPressed: () {},
       ),
-      title: Text("Steamly",
-      style: TextStyle(
-        fontFamily: GoogleFonts.cormorantGaramond().fontFamily,
-        fontSize: 22.0,
-        fontWeight: FontWeight.w900
-      ),),
+      title: Text(
+        "Steamly",
+        style: TextStyle(
+            fontFamily: GoogleFonts.cormorantGaramond().fontFamily,
+            fontSize: 22.0,
+            fontWeight: FontWeight.w900),
+      ),
     );
   }
 }

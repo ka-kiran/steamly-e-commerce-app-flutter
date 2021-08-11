@@ -36,7 +36,7 @@ class _SkipButtonState extends State<SkipButton> {
         ),
         child: Text(
           "Skip",
-          style: TextStyle(color: isPressed ? Colors.white : Colors.black),
+          style: TextStyle(color: isPressed ? Colors.black : Colors.black),
         ),
       ),
     );
@@ -51,7 +51,7 @@ Color getColor(Set<MaterialState> states) {
     MaterialState.focused,
   };
   if (states.any(interactiveStates.contains)) {
-    return kPrimaryColor;
+    return Colors.white;
   }
-  return Colors.white;
+  return kPrimaryColor;
 }

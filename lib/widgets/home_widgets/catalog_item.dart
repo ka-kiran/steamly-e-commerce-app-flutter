@@ -24,8 +24,7 @@ class CatalogItem extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => ProductDetailsPage(
-                      products: products[index],
-                    )));
+                    products: products[index], index: index)));
       },
       child: Column(
         children: <Widget>[
@@ -33,8 +32,8 @@ class CatalogItem extends StatelessWidget {
             margin: EdgeInsets.only(
                 left: kDefaultMargin,
                 right: kDefaultMargin / 2,
-                bottom: kDefaultMargin * 2.5),
-            width: size.width * 0.4,
+                bottom: kDefaultMargin * 2),
+            width: size.width * 0.5,
             decoration: BoxDecoration(
               color: catalogItemContainerColor,
               borderRadius: BorderRadius.circular(15),
@@ -74,7 +73,7 @@ class CatalogItem extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            width: 30,
+                            width: 50,
                           ),
                           Text(
                             " Rs ${products[index].price}",

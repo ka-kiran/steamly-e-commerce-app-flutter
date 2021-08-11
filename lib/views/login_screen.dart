@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:steamly_app/routes/routes.dart';
 import 'package:steamly_app/utils/constants.dart';
+import 'package:steamly_app/views/home_screen.dart';
 import 'package:steamly_app/widgets/login_page_widgets/input_textfield.dart';
 import 'package:steamly_app/widgets/login_page_widgets/skip_btn.dart';
 import 'package:steamly_app/widgets/login_page_widgets/textfield_validator.dart';
@@ -31,6 +31,7 @@ class _LoginPageState extends State<LoginPage> {
   final _auth = FirebaseAuth.instance;
   late String emailInputValue;
   late String passwordInputValue;
+  bool showSpinner = false;
 
   // on tap move to home page
   moveToHomePage(BuildContext context) async {
@@ -112,26 +113,37 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         GestureDetector(
                           onTap: () async {
-                            final snackBar = SnackBar(
-                              content: Text("Login Successful!"),
-                              action: SnackBarAction(
-                                label: "Change",
-                                onPressed: () {}, // TODO: undo snackbar
-                              ),
-                            );
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
+                            setState(() {
+                              showSpinner = true;
+                            });
                             try {
                               final user =
                                   await _auth.signInWithEmailAndPassword(
                                       email: emailInputValue,
                                       password: passwordInputValue);
-                              if (user != null) {
-                                Navigator.pushNamed(context, 'home_screen');
+                              if (user != null &&
+                                  user == emailInputValue &&
+                                  user == passwordInputValue) {
+                                final snackBar = SnackBar(
+                                  content: Text("Login Successful!"),
+                                  action: SnackBarAction(
+                                    label: "Ok",
+                                    onPressed: () {}, // TODO:
+                                  ),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HomePage()));
                               }
                             } catch (e) {
                               print(e);
                             }
+                            setState(() {
+                              showSpinner = false;
+                            });
                           }, // on tap move to home page
                           child: Container(
                             padding: EdgeInsets.symmetric(
@@ -194,9 +206,12 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                         ),
-
+                        SizedBox(
+                          height: 10,
+                        ),
                         // Alternative Login Section
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             GestureDetector(
                               onTap: () {
@@ -207,15 +222,17 @@ class _LoginPageState extends State<LoginPage> {
                                 height: 50,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20.0),
+                                  borderRadius: BorderRadius.circular(900),
                                   boxShadow: [
                                     BoxShadow(
                                       color: buttonShadowColor,
-                                      blurRadius: 11,
+                                      blurRadius: 2,
                                     ),
                                   ],
                                 ),
                                 child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
                                   children: <Widget>[
                                     Text(
                                       "Google",
@@ -246,15 +263,20 @@ class _LoginPageState extends State<LoginPage> {
                                 height: 50,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20.0),
+                                  border: Border.all(
+                                    style: BorderStyle.none,
+                                  ),
+                                  borderRadius: BorderRadius.circular(900),
                                   boxShadow: [
                                     BoxShadow(
                                       color: buttonShadowColor,
-                                      blurRadius: 11,
+                                      blurRadius: 1,
                                     ),
                                   ],
                                 ),
                                 child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
                                   children: <Widget>[
                                     Text(
                                       "Facebook",
@@ -275,13 +297,23 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ],
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, MyRoutes.signupRoute);
-                          },
-                          child: Text(
-                            "Register",
-                          ),
+                        SizedBox(
+                          height: 25,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("Don't have an account?"),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, MyRoutes.signupRoute);
+                              },
+                              child: Text(
+                                "Register",
+                              ),
+                            ),
+                          ],
                         )
                       ],
                     ),

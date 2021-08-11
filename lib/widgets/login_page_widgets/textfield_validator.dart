@@ -7,7 +7,6 @@ String? usernameValidator(value) {
   return null;
 }
 
-
 String? passwordValidator(value) {
   if (value!.isEmpty) {
     return "Please enter the valid password";
@@ -18,4 +17,3 @@ String? passwordValidator(value) {
   }
   return null;
 }
-

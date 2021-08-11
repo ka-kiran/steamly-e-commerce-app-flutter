@@ -23,13 +23,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.signupRoute, // initial route for splash screen
+      initialRoute:
+          MyRoutes.homeRoute, // initial route for splash screen
       routes: {
         "/": (context) => HomePage(), // default route
+        MyRoutes.splashScreenRoute: (context) => SplashScreen(),
         MyRoutes.loginRoute: (context) => LoginPage(),
         MyRoutes.signupRoute: (context) => SignUpScreen(),
         MyRoutes.onBoardingRoute: (context) => OnBoardingScreen(),
         MyRoutes.homeRoute: (context) => HomePage(),
+        //MyRoutes.productDetailsRoute: (context) => ProductDetailsPage(),
         MyRoutes.viewMoreRoute: (context) => ViewMorePage(),
       },
     );

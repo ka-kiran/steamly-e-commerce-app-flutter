@@ -25,9 +25,8 @@ class ViewMorePage extends StatelessWidget {
                 products: products[index],
                 size: size,
                 index: index,
-                press: () => ProductDetailsPage(
-                  products: products[index],
-                ),
+                press: () =>
+                    ProductDetailsPage(products: products[index], index: index),
               );
             },
           ),
@@ -59,9 +58,7 @@ class GridViewMore extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    ProductDetailsPage(
-                      products: products,
-                    )));
+                    ProductDetailsPage(products: products, index: index)));
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,7 +66,7 @@ class GridViewMore extends StatelessWidget {
           Column(
             children: <Widget>[
               Container(
-                width: size.width * 0.4,
+                width: size.width * 0.45,
                 decoration: BoxDecoration(
                   color: catalogItemContainerColor,
                   borderRadius: BorderRadius.circular(15),

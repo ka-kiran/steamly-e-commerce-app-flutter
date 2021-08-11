@@ -72,6 +72,9 @@ class HomePageBody extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: Row(
@@ -100,7 +103,7 @@ class HomePageBody extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,

@@ -4,8 +4,10 @@ import 'package:steamly_app/models/products.dart';
 import 'package:steamly_app/utils/constants.dart';
 
 class ProductDetailsBody extends StatelessWidget {
+ final Products products;
+ final int index; 
   const ProductDetailsBody({
-    Key? key,
+    Key? key, required this.products, required this.index,
   }) : super(key: key);
 
   @override
@@ -36,6 +38,7 @@ class ProductDetailsBody extends StatelessWidget {
                     ],
                   ),
                 ),
+                Text(products.title)
               ],
             ),
           ),
