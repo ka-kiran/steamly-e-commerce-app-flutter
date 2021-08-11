@@ -28,7 +28,7 @@ class HomePageBody extends StatelessWidget {
             child: NavigationBelowSearch(),
           ),
           SizedBox(
-            height: 10.0,
+            height: 24.0,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),

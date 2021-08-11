@@ -16,64 +16,67 @@ class ProductDetailsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          Container(
-            child: Image.asset(products.image),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: size.height * 0.3),
-            height: 500,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(24),
-                topRight: Radius.circular(24),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset.zero,
-                  color: kShadowColor,
-                  blurRadius: 8,
-                )
-              ],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: kDefaultPadding * 1,
-                right: kDefaultPadding * 1,
-                top: kDefaultPadding,
-              ),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        products.title,
-                        style: TextStyle(fontWeight: FontWeight.w400),
-                      ),
-                      Spacer(),
-                      Text(
-                        "Rs ${products.markedPrice}",
-                        style: TextStyle(
-                          fontSize: 14,
-                        ),
-                      ),
-                      SizedBox(width: 3),
-                      Text(
-                        "Rs ${products.price}",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  AddToCart(tap: () {}),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Hero(
+                tag: Key(products.id.toString()),
+                child: Image.asset(products.image, height: size.height * 0.4)),
+            Container(
+              margin: EdgeInsets.only(
+                  top: size.height * 0.1, bottom: size.height * 0.3),
+              height: size.height * 0.6,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(24),
+                  topRight: Radius.circular(24),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset.zero,
+                    color: kShadowColor,
+                    blurRadius: 8,
+                  )
                 ],
               ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: kDefaultPadding * 1,
+                  right: kDefaultPadding * 1,
+                  top: kDefaultPadding,
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          products.title,
+                          style: TextStyle(fontWeight: FontWeight.w400),
+                        ),
+                        Spacer(),
+                        Text(
+                          "Rs ${products.markedPrice}",
+                          style: TextStyle(
+                            fontSize: 12,
+                          ),
+                        ),
+                        SizedBox(width: 3),
+                        Text(
+                          "Rs ${products.price}",
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    AddToCart(tap: () {}),
+                  ],
+                ),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

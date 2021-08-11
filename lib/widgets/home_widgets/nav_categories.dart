@@ -43,7 +43,7 @@ class _NavigationBelowSearchState extends State<NavigationBelowSearch> {
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         // Container widget with box decorated microinteraction nav section
         child: Container(
-          margin: EdgeInsets.only(left: 12.0),
+          margin: EdgeInsets.only(left: kDefaultMargin),
           height: 20.0,
           padding: EdgeInsets.only(left: 20.0, right: 20.0),
           decoration: BoxDecoration(
@@ -52,15 +52,22 @@ class _NavigationBelowSearchState extends State<NavigationBelowSearch> {
             ),
             borderRadius: BorderRadius.circular(8.0),
           ),
-          child: Text(
-            navSection[index], // pass navigation bar list
-            style: TextStyle(
-              fontWeight: FontWeight.normal,
-              fontSize: 12.0,
-              color: selectedIndex == index // set the selected index color
-                  ? kPrimaryTextColor
-                  : kSecondaryTextColor,
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                navSection[index], // pass navigation bar list
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14,
+                  color: selectedIndex == index // set the selected index color
+                      ? kPrimaryTextColor
+                      : kSecondaryTextColor,
+                ),
+              ),
+            ],
           ),
         ),
       ),
