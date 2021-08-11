@@ -11,10 +11,12 @@ class AddToCart extends StatelessWidget {
     return GestureDetector(
       onTap: tap,
       child: Container(
-        margin: EdgeInsets.all(kDefaultPadding),
+        margin: EdgeInsets.only(left: kDefaultMargin *5, 
+        right: kDefaultMargin *5,
+        top: kDefaultMargin *2),
+        
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(kDefaultPadding * 2),
-            color: kPrimaryColor),
+            borderRadius: BorderRadius.circular(11), color: kPrimaryColor),
         height: 50.0,
         alignment: Alignment.center,
         child: Text(

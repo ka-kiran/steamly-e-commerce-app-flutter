@@ -20,6 +20,9 @@ class ProductDetailsBody extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
+            child: Image.asset(products.image),
+          ),
+          Container(
             margin: EdgeInsets.only(top: size.height * 0.3),
             height: 500,
             decoration: BoxDecoration(
@@ -46,21 +49,22 @@ class ProductDetailsBody extends StatelessWidget {
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Text(products.title),
+                      Text(
+                        products.title,
+                        style: TextStyle(fontWeight: FontWeight.w400),
+                      ),
                       Spacer(),
                       Text(
                         "Rs ${products.markedPrice}",
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 14,
                         ),
                       ),
-                      SizedBox(
-                        width: 3
-                      ),
+                      SizedBox(width: 3),
                       Text(
                         "Rs ${products.price}",
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
