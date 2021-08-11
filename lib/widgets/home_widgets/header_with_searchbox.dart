@@ -55,7 +55,7 @@ class HeaderWithSearchBox extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    width: 100.0,
+                    width: size.width*0.29,
                   ),
                   Row(
                     children: <Widget>[

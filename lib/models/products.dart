@@ -5,6 +5,7 @@ class Products {
   final int price, id;
   final Color color;
   final double rating;
+  final int markedPrice;
   Products(
       {required this.id,
       required this.image,
@@ -12,7 +13,8 @@ class Products {
       required this.price,
       required this.description,
       required this.color,
-      required this.rating});
+      required this.rating,
+      required this.markedPrice});
 }
 
 List<Products> products = [
@@ -21,6 +23,7 @@ List<Products> products = [
       image: "assets/images/bag 1.png",
       title: "Black Leather Bag",
       price: 4400,
+      markedPrice: 5000,
       description: "this is desc",
       color: Color(0xff202020),
       rating: 4.5),
@@ -29,6 +32,7 @@ List<Products> products = [
       image: "assets/images/bag 2.png",
       title: "Red Dynamo",
       price: 4999,
+      markedPrice: 5000,
       description: "this is desc 2",
       color: Color(0xff202020),
       rating: 4.2),
@@ -37,6 +41,7 @@ List<Products> products = [
       image: "assets/images/bag 3.png",
       title: "Pink Bag",
       price: 4999,
+      markedPrice: 5000,
       description: "this is desc 3",
       color: Color(0xff202020),
       rating: 4.2),
@@ -45,6 +50,7 @@ List<Products> products = [
       image: "assets/images/bag 4.png",
       title: "Pink Bag",
       price: 4999,
+      markedPrice: 5000,
       description: "this is desc 4",
       color: Color(0xff202020),
       rating: 4.2),
@@ -53,6 +59,7 @@ List<Products> products = [
       image: "assets/images/bag 5.png",
       title: "Pink Bag",
       price: 4999,
+      markedPrice: 5000,
       description: "this is desc 5",
       color: Color(0xff202020),
       rating: 4.2),
@@ -61,6 +68,7 @@ List<Products> products = [
       image: "assets/images/bag 6.png",
       title: "Pink Bag",
       price: 4999,
+      markedPrice: 5000,
       description: "this is desc 6",
       color: Color(0xff202020),
       rating: 4.2)
