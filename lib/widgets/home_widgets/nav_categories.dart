@@ -40,7 +40,7 @@ class _NavigationBelowSearchState extends State<NavigationBelowSearch> {
         });
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        padding: const EdgeInsets.symmetric(horizontal: 1.5),
         // Container widget with box decorated microinteraction nav section
         child: Container(
           margin: EdgeInsets.only(left: kDefaultMargin),
