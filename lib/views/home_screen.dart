@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+  GlobalKey<ScaffoldState> _drawerKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,13 +32,14 @@ class _HomePageState extends State<HomePage> {
 
   AppBar buildAppBar() {
     return AppBar(
+      key: _drawerKey,
       elevation: 0,
       leading: IconButton(
         icon: SvgPicture.asset(
           "assets/icons/menu.svg",
           width: 50.0,
         ),
-        onPressed: () => _drawerKey.currentState!.openEndDrawer(),
+        onPressed: () => Scaffold.of(context).openDrawer(),
       ),
       title: Text(
         "Steamly",

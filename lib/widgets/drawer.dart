@@ -10,6 +10,8 @@ class MyDrawer extends StatelessWidget {
     final imagePath = "assets/images/girl_profile.jpg";
     return Drawer(
       child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         color: kPrimaryColor,
         child: ListView(
           padding: EdgeInsets.zero,
@@ -61,6 +63,9 @@ class MyDrawer extends StatelessWidget {
                 Icons.logout,
                 color: Colors.black,
               ),
+              onTap: () {
+                Navigator.pop(context);
+              },
               title: Text(
                 "Log Out",
                 textScaleFactor: 1.2,
