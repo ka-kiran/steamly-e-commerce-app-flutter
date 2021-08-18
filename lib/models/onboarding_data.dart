@@ -14,7 +14,7 @@ List<SliderModel> sliderModel = [
   SliderModel(
       title: "Discover the trends and products.",
       image: "assets/images/onboarding_image1.svg",
-      desc: "One hotspot fro wide range of categories."),
+      desc: "One hotspot for wide range of categories."),
   SliderModel(
     image: "assets/images/onboarding_image2.svg",
     title: "Hang tight with your wishlist.",

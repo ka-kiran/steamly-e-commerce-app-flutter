@@ -87,6 +87,9 @@ class ProductDetailsBody extends StatelessWidget {
                               ColorAndCode(products: products),
                             ],
                           ),
+                          Column(
+                            
+                          ),
                         ],
                       ),
                     ),
