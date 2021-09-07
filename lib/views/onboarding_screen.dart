@@ -47,57 +47,61 @@ class _OnBoardingState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: buildPageView(),
-          ),
-          // for current slider indicator
-          Container(
-            margin: EdgeInsets.only(bottom: 80.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                sliderModel.length,
-                (index) => buidlDots(index, context), // slider indicator dots
-              ),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: buildPageView(),
             ),
-          ),
-          Container(
-            height: 60.0,
-            width: MediaQuery.of(context).size.width,
-            //width: double.infinity,
-            color: kPrimaryColor,
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
+            // for current slider indicator
+            Container(
+              margin: EdgeInsets.only(bottom: 80.0),
               child: Row(
-                children: <Widget>[
-                  InkWell(
-                    onTap: () {
-                      moveToLoginPage(context);
-                    },
-                    child: Text("Skip"),
-                  ),
-                  SizedBox(
-                    width: 290,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      // controlling page flow
-                      if (currentSliderIndex == sliderModel.length - 1) {
-                        moveToLoginPage(context);
-                      }
-                      _pageController.nextPage(
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.bounceIn);
-                    },
-                    child: Text("Next"),
-                  ),
-                ],
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  sliderModel.length,
+                  (index) => buidlDots(index, context), // slider indicator dots
+                ),
               ),
             ),
-          ),
-        ],
+            Container(
+              height: 60.0,
+              width: MediaQuery.of(context).size.width,
+              //width: double.infinity,
+              color: kPrimaryColor,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  children: <Widget>[
+                    InkWell(
+                      onTap: () {
+                        moveToLoginPage(context);
+                      },
+                      child: Text("Skip"),
+                    ),
+                    SizedBox(
+                      width: 290,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        // controlling page flow
+                        if (currentSliderIndex == sliderModel.length - 1) {
+                          moveToLoginPage(context);
+                        }
+                        _pageController.nextPage(
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.bounceIn);
+                      },
+                      child: Text("Next"),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

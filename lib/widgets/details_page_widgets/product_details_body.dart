@@ -1,19 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:steamly_app/models/products.dart';
 import 'package:steamly_app/utils/constants.dart';
 import 'package:steamly_app/widgets/details_page_widgets/add_cart.dart';
 import 'package:steamly_app/widgets/details_page_widgets/color_and_code.dart';
+import 'package:steamly_app/controller/cart_controller.dart';
 
 class ProductDetailsBody extends StatelessWidget {
   final Products products;
   final int index;
-  const ProductDetailsBody({
+   ProductDetailsBody({
     Key? key,
     required this.products,
     required this.index,
   }) : super(key: key);
 
+  final MyController cartController = Get.put(MyController());
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -87,15 +90,59 @@ class ProductDetailsBody extends StatelessWidget {
                               ColorAndCode(products: products),
                             ],
                           ),
-                          Column(
-                            
-                          ),
+                          Column(),
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
+            ),
+            Row(
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(26),
+                    color: Colors.blueAccent,
+                  ),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
+                    onPressed: () => cartController.incrementProduct()(),
+                  ),
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                Obx(() => Text(
+                      "${cartController.productCounter.toString()}",
+                      style: TextStyle(
+                        fontSize: 30,
+                      ),
+                    )), // display the counter
+                SizedBox(
+                  width: 30,
+                ),
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(26),
+                    color: Colors.blueAccent,
+                  ),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.remove,
+                      color: Colors.white,
+                    ),
+                    onPressed: () => cartController.decrementProduct()(),
+                  ),
+                ),
+              ],
             ),
             AddToCart(tap: () {}),
           ],
@@ -104,6 +151,3 @@ class ProductDetailsBody extends StatelessWidget {
     );
   }
 }
-
-
-

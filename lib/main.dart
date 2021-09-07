@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:steamly_app/common_components/bottom_nav.dart';
 import 'package:steamly_app/models/products.dart';
 import 'package:steamly_app/routes/routes.dart';
 import 'package:steamly_app/views/home_screen.dart';
@@ -23,8 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute:
-          MyRoutes.splashScreenRoute, // initial route for splash screen
+      initialRoute: MyRoutes.bottomNavRoute, // initial route for splash screen
       routes: {
         "/": (context) => HomePage(), // default route
         MyRoutes.splashScreenRoute: (context) => SplashScreen(),
@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.homeRoute: (context) => HomePage(),
         //MyRoutes.productDetailsRoute: (context) => ProductDetailsPage(),
         MyRoutes.viewMoreRoute: (context) => ViewMorePage(),
+        MyRoutes.bottomNavRoute: (context) => BottomNavigation(),
       },
     );
   }

@@ -6,7 +6,8 @@ import 'package:steamly_app/widgets/details_page_widgets/product_details_body.da
 class ProductDetailsPage extends StatelessWidget {
   final Products products;
   final int index;
-  const ProductDetailsPage({Key? key, required this.products, required this.index})
+  const ProductDetailsPage(
+      {Key? key, required this.products, required this.index})
       : super(key: key);
 
   @override
@@ -16,6 +17,7 @@ class ProductDetailsPage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: DetailsAppBar(),
       body: ProductDetailsBody(index: index, products: products),
+      // second value is of ProductDetailsPage
     );
   }
 

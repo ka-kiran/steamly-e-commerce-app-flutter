@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:steamly_app/common_components/bottom_nav.dart';
 import 'package:steamly_app/utils/constants.dart';
 import 'package:steamly_app/widgets/drawer.dart';
 import 'package:steamly_app/widgets/home_widgets/home_body.dart';

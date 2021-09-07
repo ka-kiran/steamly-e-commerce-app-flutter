@@ -6,4 +6,5 @@ class MyRoutes {
   static String homeRoute = "/home";
   static String productDetailsRoute = "/productDetails";
   static String viewMoreRoute = "/viewmore";
+  static String bottomNavRoute = "/bottomNav";
 }

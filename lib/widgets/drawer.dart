@@ -10,8 +10,6 @@ class MyDrawer extends StatelessWidget {
     final imagePath = "assets/images/girl_profile.jpg";
     return Drawer(
       child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
         color: kPrimaryColor,
         child: ListView(
           padding: EdgeInsets.zero,

@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
   // on tap move to home page
   moveToHomePage(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
-      await Navigator.pushNamed(context, MyRoutes.homeRoute);
+      await Navigator.pushNamed(context, MyRoutes.bottomNavRoute);
       setState(() {
         moveToHomePage(context);
       });
@@ -97,14 +97,17 @@ class _LoginPageState extends State<LoginPage> {
                         SizedBox(
                           height: 10.0,
                         ),
-                        Container(
-                          margin: EdgeInsets.only(right: 10.0),
-                          padding: EdgeInsets.symmetric(
-                              vertical: 16.0, horizontal: 8.0),
-                          child: Text(
-                            "Forgot Password?",
-                            style: TextStyle(
-                              color: Colors.blueGrey,
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            margin: EdgeInsets.only(right: 10.0),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 16.0, horizontal: 8.0),
+                            child: Text(
+                              "Forgot Password?",
+                              style: TextStyle(
+                                color: Colors.blueGrey,
+                              ),
                             ),
                           ),
                         ),
