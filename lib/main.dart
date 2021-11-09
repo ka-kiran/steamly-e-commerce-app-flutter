@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:steamly_app/common_components/bottom_nav.dart';
 import 'package:steamly_app/models/products.dart';
 import 'package:steamly_app/routes/routes.dart';
+import 'package:steamly_app/utils/translator.dart';
 import 'package:steamly_app/views/home_screen.dart';
 import 'package:steamly_app/views/login_screen.dart';
 import 'package:steamly_app/views/product_details_page.dart';
@@ -17,14 +18,22 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  LanguagesEnum selectedLanguage = LanguagesEnum.English;
+ 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.splashScreenRoute, // initial route for splash screen
+      initialRoute:
+          MyRoutes.splashScreenRoute, // initial route for splash screen
       routes: {
         "/": (context) => HomePage(), // default route
         MyRoutes.splashScreenRoute: (context) => SplashScreen(),

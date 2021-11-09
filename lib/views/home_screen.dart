@@ -43,6 +43,9 @@ class _HomePageState extends State<HomePage> {
             width: 50.0,
           ),
           onPressed: () => {Scaffold.of(context).openDrawer()},
+          //onPressed: () => {_drawerKey.currentState!.openDrawer()},
+          
+        
         ),
       ),
       title: Text(
