@@ -33,21 +33,25 @@ class _HomePageState extends State<HomePage> {
 
   AppBar buildAppBar() {
     return AppBar(
+      backgroundColor: kPrimaryColor,
       key: _drawerKey,
       elevation: 0,
-      leading: IconButton(
-        icon: SvgPicture.asset(
-          "assets/icons/menu.svg",
-          width: 50.0,
+      leading: Builder(
+        builder: (BuildContext context) => IconButton(
+          icon: SvgPicture.asset(
+            "assets/icons/menu.svg",
+            width: 50.0,
+          ),
+          onPressed: () => {Scaffold.of(context).openDrawer()},
         ),
-        onPressed: () => Scaffold.of(context).openDrawer(),
       ),
       title: Text(
         "Steamly",
         style: TextStyle(
             fontFamily: GoogleFonts.cormorantGaramond().fontFamily,
             fontSize: 22.0,
-            fontWeight: FontWeight.w900),
+            color: Colors.black,
+            fontWeight: FontWeight.w600),
       ),
     );
   }

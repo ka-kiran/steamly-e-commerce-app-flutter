@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,28 +38,48 @@ class HeaderWithSearchBox extends StatelessWidget {
               ),
             ),
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              padding: EdgeInsets.symmetric(vertical: 8.0),
               child: Row(
                 children: <Widget>[
-                  CircleAvatar(
-                    radius: 28.0,
-                    backgroundColor: Colors.white54,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 3.0),
                     child: CircleAvatar(
-                      radius: 25.0,
-                      backgroundImage:
-                          AssetImage("assets/images/girl_profile.jpg"),
+                      radius: 28.0,
+                      backgroundColor: Colors.white54,
+                      child: CircleAvatar(
+                        radius: 25.0,
+                        backgroundImage:
+                            AssetImage("assets/images/shirnkhu.webp"),
+                      ),
                     ),
                   ),
-                  Column(
-                    
-                    children: <Widget>[
-                      Text("Hi, Assu"),
-                      Text("GOOD EVENING"),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "Hi, Pandu",
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            fontFamily: GoogleFonts.roboto().fontFamily,
+                          ),
+                        ),
+                        Text(
+                          "GOOD EVENING",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                            fontFamily: GoogleFonts.roboto().fontFamily,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   Expanded(
                     child: SizedBox(
-                      width: size.width /3,
+                      width: size.width / 3,
                     ),
                   ),
                   Row(

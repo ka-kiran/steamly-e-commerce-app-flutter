@@ -24,7 +24,7 @@ class _SkipButtonState extends State<SkipButton> {
           setState(() {
             isPressed = true;
           });
-          Navigator.pushNamed(context, MyRoutes.homeRoute);
+          Navigator.pushNamed(context, MyRoutes.bottomNavRoute);
         },
         style: ButtonStyle(
           shape: MaterialStateProperty.all(

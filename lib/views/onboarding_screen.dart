@@ -62,7 +62,7 @@ class _OnBoardingState extends State<OnBoardingScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(
                   sliderModel.length,
-                  (index) => buidlDots(index, context), // slider indicator dots
+                  (index) => buildDots(index, context), // slider indicator dots
                 ),
               ),
             ),
@@ -162,7 +162,7 @@ class _OnBoardingState extends State<OnBoardingScreen> {
   }
 
   // build slider indicator dots
-  Container buidlDots(int index, BuildContext context) {
+  Container buildDots(int index, BuildContext context) {
     //parameter  index
     return Container(
       height: 10,

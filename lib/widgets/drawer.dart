@@ -7,7 +7,7 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imagePath = "assets/images/girl_profile.jpg";
+    final imagePath = "assets/images/shirnkhu.webp";
     return Drawer(
       child: Container(
         color: kPrimaryColor,
@@ -21,10 +21,10 @@ class MyDrawer extends StatelessWidget {
               child: UserAccountsDrawerHeader(
                 margin: EdgeInsets.zero,
                 accountName: Text(
-                  "Assu",
+                  "Shrinkhu",
                   style: TextStyle(color: Colors.black),
                 ),
-                accountEmail: Text("assu@gmail.com",
+                accountEmail: Text("pandu@gmail.com",
                     style: TextStyle(color: Colors.black)),
                 currentAccountPicture: CircleAvatar(
                     radius: 25.0, backgroundImage: AssetImage(imagePath)),
