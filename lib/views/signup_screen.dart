@@ -1,13 +1,12 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:steamly_app/routes/routes.dart';
 import 'package:steamly_app/utils/constants.dart';
-import 'package:steamly_app/views/home_screen.dart';
-import 'package:steamly_app/views/login_screen.dart';
 import 'package:steamly_app/widgets/login_page_widgets/input_textfield.dart';
 import 'package:steamly_app/widgets/login_page_widgets/textfield_validator.dart';
 

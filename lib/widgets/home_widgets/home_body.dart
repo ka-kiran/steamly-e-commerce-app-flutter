@@ -1,8 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:steamly_app/utils/constants.dart';
+import 'package:steamly_app/utils/translator.dart';
 import 'package:steamly_app/widgets/home_widgets/catalog_item.dart';
 import 'package:steamly_app/widgets/home_widgets/header_with_searchbox.dart';
 import 'package:steamly_app/widgets/home_widgets/nav_categories.dart';
@@ -15,6 +15,7 @@ class HomePageBody extends StatelessWidget {
         context, MaterialPageRoute(builder: (context) => ViewMorePage()));
   }
 
+  LanguagesEnum selectedLanguage = LanguagesEnum.Nepali;
   @override
   Widget build(BuildContext context) {
     // Total height and width of screen for responsive behaviour
@@ -34,7 +35,7 @@ class HomePageBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: Row(
               children: <Widget>[
-                TitleWithMoreBtn(titleText: "Recommended", key: null),
+                TitleWithMoreBtn(titleText: "Recommended".tr, key: null),
                 Spacer(),
                 Container(
                   child: GestureDetector(
@@ -44,7 +45,11 @@ class HomePageBody extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "View More",
+                          "view_more".tr,
+                          //  Translator().translate(
+                          //     selectedLanguage,
+                          //     "View More",
+                          // ),
                           style: TextStyle(
                             color: viewMoreTextColor,
                           ),
@@ -79,7 +84,7 @@ class HomePageBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: Row(
               children: <Widget>[
-                TitleWithMoreBtn(titleText: "Best Deals", key: null),
+                TitleWithMoreBtn(titleText: "best_deals".tr, key: null),
                 Spacer(),
                 Container(
                   child: GestureDetector(
@@ -89,7 +94,7 @@ class HomePageBody extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "View More",
+                          "View More".tr,
                           style: TextStyle(
                             color: viewMoreTextColor,
                           ),
@@ -122,30 +127,6 @@ class HomePageBody extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-
-
-// bottom navigation bar
-class CustomeBottomNavigationBar extends StatefulWidget {
-  const CustomeBottomNavigationBar({Key? key}) : super(key: key);
-
-  @override
-  _CustomeBottomNavigationBarState createState() =>
-      _CustomeBottomNavigationBarState();
-}
-
-class _CustomeBottomNavigationBarState
-    extends State<CustomeBottomNavigationBar> {
-  // ignore: unused_field
-  int _navSelectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(),
     );
   }
 }

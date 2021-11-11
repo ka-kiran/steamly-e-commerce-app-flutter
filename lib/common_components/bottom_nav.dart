@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:steamly_app/utils/constants.dart';
+import 'package:steamly_app/utils/translator.dart';
 import 'package:steamly_app/views/cart_screen.dart';
 import 'package:steamly_app/views/categories.dart';
 import 'package:steamly_app/views/home_screen.dart';

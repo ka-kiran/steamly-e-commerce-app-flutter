@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 // defining enumeration_name and enumeration_list
 enum LanguagesEnum {
@@ -6,34 +7,63 @@ enum LanguagesEnum {
   Nepali,
 }
 
-class Translator {
-  // mapping object for English language
-  Map<String, dynamic> en = {
-    "home": "Home",
-    "category": "Category",
-    "cart": "Cart",
-    "profile": "Profile",
-  };
-  // mapping object for Nepali language
-  Map<String, dynamic> nep = {
-    "home": "घर",
-    "category": "श्रेणी",
-    "cart": "कार्ट",
-    "profile": "प्रोफाइल",
-  };
+class MyTranslator extends Translations {
+  // // mapping object for English language
+  // Map<String, dynamic> en = {
+  //   "home": "Home",
+  //   "category": "Category",
+  //   "cart": "Cart",
+  //   "profile": "Profile",
+  //   "recommended": "Recommended",
+  //   "view_more": "View More",
+  // };
+  // // mapping object for Nepali language
+  // Map<String, dynamic> nep = {
+  //   "home": "घर",
+  //   "category": "श्रेणी",
+  //   "cart": "कार्ट",
+  //   "profile": "प्रोफाइल",
+  //   "recommended": "सिफारिस",
+  //   "view_more": "अझ धेरै हेर्नुहोस्",
+  // };
 
-  // language preferences
-  dynamic to(LanguagesEnum selectedLanguage) {
-    if (selectedLanguage == LanguagesEnum.English) {
-      return en;
-    } else if (selectedLanguage == LanguagesEnum.Nepali) {
-      return nep;
-    }
-  }
+  // // language preferences
+  // dynamic to(LanguagesEnum selectedLanguage) {
+  //   if (selectedLanguage == LanguagesEnum.English) {
+  //     return en;
+  //   } else if (selectedLanguage == LanguagesEnum.Nepali) {
+  //     return nep;
+  //   }
+  // }
 
-  // for string translation
-  String translate(LanguagesEnum selectedLanguage, String text) {
-    return to(
-        selectedLanguage)[text.toString().toLowerCase().replaceAll(" ", "_")];
-  }
+  // // for string translation
+  // String translate(LanguagesEnum selectedLanguage, String text) {
+  //   return to(
+  //       selectedLanguage)[text.toString().toLowerCase().replaceAll(" ", "_")];
+  // }
+
+  @override
+  Map<String, Map<String, String>> get keys => {
+        // English US
+        "en_US": {
+          "home": "Home",
+          "category": "Category",
+          "cart": "Cart",
+          "profile": "Profile",
+          "recommended": "Recommended",
+          "view_more": "View More",
+          "best_deals": "Best Deals",
+        },
+
+        // Nepali language
+        "hi_HI": {
+          "home": "घर",
+          "category": "श्रेणी",
+          "cart": "कार्ट",
+          "profile": "प्रोफाइल",
+          "recommended": "सिफारिस",
+          "view_more": "अझ धेरै हेर्नुहोस्",
+          "best_deals": "सबै भन्दा राम्रो सम्झौता"
+        },
+      };
 }
