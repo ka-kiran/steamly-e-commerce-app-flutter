@@ -53,6 +53,10 @@ class MyTranslator extends Translations {
           "recommended": "Recommended",
           "view_more": "View More",
           "best_deals": "Best Deals",
+          "popular": "Popular",
+          "new_arrivals": "New Arrivals",
+          "all_categories": "All Categories",
+          "i_am_searching_for": "I am searching for"
         },
 
         // Nepali language
@@ -63,7 +67,11 @@ class MyTranslator extends Translations {
           "profile": "प्रोफाइल",
           "recommended": "सिफारिस",
           "view_more": "अझ धेरै हेर्नुहोस्",
-          "best_deals": "सबै भन्दा राम्रो सम्झौता"
+          "best_deals": "सबै भन्दा राम्रो सम्झौता",
+          "popular": "लोकप्रिय",
+          "new_arrivals": "नयाँ आगमन",
+          "all_categories": "सबै कोटिहरू",
+          "i_am_searching_for": "म खोज्दै छु"
         },
       };
 }

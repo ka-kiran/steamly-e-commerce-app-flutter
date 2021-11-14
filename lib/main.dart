@@ -39,19 +39,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // @override
-  // void initState() {
-  //   SystemChrome.setPreferredOrientations([
-  //     DeviceOrientation.landscapeLeft,
-  //     DeviceOrientation.portraitDown,
-  //   ]);
-  //   super.initState();
-  // }
-
-  // @override
-  // void dispose() {
-  //   super.dispose();
-  // }
+  
 
   LanguagesEnum selectedLanguage = LanguagesEnum.English;
 

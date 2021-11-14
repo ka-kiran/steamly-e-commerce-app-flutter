@@ -84,7 +84,9 @@ class HomePageBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: Row(
               children: <Widget>[
-                TitleWithMoreBtn(titleText: "best_deals".tr, key: null),
+                TitleWithMoreBtn(
+                    titleText: "best_deals".tr,
+                    key: null), // key.tr in getx translation
                 Spacer(),
                 Container(
                   child: GestureDetector(
@@ -94,7 +96,7 @@ class HomePageBody extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "View More".tr,
+                          "view_more".tr,
                           style: TextStyle(
                             color: viewMoreTextColor,
                           ),

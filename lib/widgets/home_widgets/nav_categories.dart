@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:steamly_app/utils/constants.dart';
+import 'package:get/get.dart';
 
 // navigation section below the search box widget
 class NavigationBelowSearch extends StatefulWidget {
