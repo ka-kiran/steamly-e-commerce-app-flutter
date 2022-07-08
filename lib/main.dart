@@ -39,7 +39,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  
+  // @override
+  // void initState() {
+  //   SystemChrome.setPreferredOrientations([
+  //     DeviceOrientation.landscapeLeft,
+  //     DeviceOrientation.portraitDown,
+  //   ]);
+  //   super.initState();
+  // }
+
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  // }
 
   LanguagesEnum selectedLanguage = LanguagesEnum.English;
 
@@ -61,7 +73,7 @@ class _MyAppState extends State<MyApp> {
         Locale('en', "US"),
         Locale("hi", "HI"),
       ],
-      initialRoute: MyRoutes.homeRoute, // initial route for splash screen
+      initialRoute: MyRoutes.splashScreenRoute, // initial route for splash screen
       routes: {
         "/": (context) => HomePage(), // default route
         MyRoutes.splashScreenRoute: (context) => SplashScreen(),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:steamly_app/utils/constants.dart';
 
@@ -129,7 +130,7 @@ class HeaderWithSearchBox extends StatelessWidget {
                     child: TextField(
                       onChanged: (value) {},
                       decoration: InputDecoration(
-                        hintText: "I am searching for...",
+                        hintText: "i_am_searching_for".tr + "...",
                         hintStyle: TextStyle(
                           color: hintTextSearchColor,
                           fontFamily: GoogleFonts.robotoCondensed().fontFamily,

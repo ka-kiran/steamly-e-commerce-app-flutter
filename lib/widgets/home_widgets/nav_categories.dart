@@ -12,11 +12,11 @@ class NavigationBelowSearch extends StatefulWidget {
 
 class _NavigationBelowSearchState extends State<NavigationBelowSearch> {
   List<String> navSection = [
-    "Popular",
-    "New Arrivals",
-    "All Categories",
-    "Offers",
-    "Luxury",
+    "popular",
+    "new_arrivals",
+    "all_categories",
+    "offers",
+    "luxury",
   ];
 
   int selectedIndex = 0; // microinteraction nav section index
@@ -58,7 +58,9 @@ class _NavigationBelowSearchState extends State<NavigationBelowSearch> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                navSection[index], // pass navigation bar list
+                "${navSection[index]}"
+                    .tr
+                    .toString(), // pass navigation bar list
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.normal,

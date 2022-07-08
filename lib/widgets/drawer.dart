@@ -92,15 +92,29 @@ class _MyDrawerState extends State<MyDrawer> {
                                     setState(() {
                                       _groupValue = value as String?;
                                       val = value.toString();
-                                      print(val);
+                                      // debug print(val);
                                       var locale = Locale("en", "US");
                                       Get.updateLocale(locale);
                                       Navigator.pop(context);
+                                      Get.snackbar(
+                                        "Languages Changed",
+                                        "Languages set to English",
+                                        snackPosition: SnackPosition.BOTTOM,
+                                        backgroundColor: Colors.black,
+                                        isDismissible: true,
+                                        duration: Duration(seconds: 3),
+                                        colorText: Colors.white,
+                                      );
+                                      // ScaffoldMessenger.of(context)
+                                      //     .showSnackBar(
+                                      //         showSnackBarLanguageChanged(
+                                      //             value));
+
                                       // Navigator.of(context)
                                       //     .pushNamedAndRemoveUntil(
-                                      //         MyRoutes.homeRoute,
+                                      //         MyRoutes.bottomNavRoute,
                                       //         ModalRoute.withName(
-                                      //             MyRoutes.homeRoute));
+                                      //             MyRoutes.bottomNavRoute));
                                     });
                                   }),
                             ),
@@ -114,7 +128,18 @@ class _MyDrawerState extends State<MyDrawer> {
                                     val = value.toString();
                                     var locale = Locale("hi", "HI");
                                     Get.updateLocale(locale);
+                                    Get.snackbar(
+                                      "Languages Changed",
+                                      "Languages set to Nepali",
+                                      snackPosition: SnackPosition.BOTTOM,
+                                      backgroundColor: Colors.black,
+                                      isDismissible: true,
+                                      duration: Duration(seconds: 3),
+                                      colorText: Colors.white,
+                                    );
                                     Navigator.pop(context);
+                                    // ScaffoldMessenger.of(context).showSnackBar(
+                                    //     showSnackBarLanguageChanged(value));
                                   }),
                             ),
                           ],
@@ -149,4 +174,16 @@ class _MyDrawerState extends State<MyDrawer> {
       ),
     );
   }
+}
+
+// show snackbar content on changing languages
+showSnackBarLanguageChanged(value) {
+  final snackBar = SnackBar(
+    content: value == "en"
+        ? const Text("Language set to English")
+        : const Text("Language set to Nepali"),
+    duration: Duration(seconds: 3),
+  );
+
+  return snackBar;
 }

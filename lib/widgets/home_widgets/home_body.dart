@@ -35,7 +35,7 @@ class HomePageBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: Row(
               children: <Widget>[
-                TitleWithMoreBtn(titleText: "Recommended".tr, key: null),
+                TitleWithMoreBtn(titleText: "recommended".tr, key: null),
                 Spacer(),
                 Container(
                   child: GestureDetector(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:steamly_app/models/products.dart';
 import 'package:steamly_app/utils/constants.dart';
 import 'package:steamly_app/views/product_details_page.dart';
@@ -91,7 +92,7 @@ class GridViewMore extends StatelessWidget {
                       ),
                       child: Column(
                         children: <Widget>[
-                          Text(products.title),
+                          Text("${products.title}".toString().tr),
                           SizedBox(
                             height: 8,
                           ),
